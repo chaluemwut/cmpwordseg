@@ -25,10 +25,11 @@ class MainCompare:
 					result.append(next_data[:next_data.index("/")])
 					counter+=1
 					next_data = data[counter]
-				time_swath, correct_swath, wrong_swath = wordseg.swath(origin_data, result)
-				print time_swath, correct_swath, wrong_swath
-				time_wordcut, correct_wordcut, wrong_wordcut = wordseg.wordcut(origin_data, result)
-				print time_wordcut, correct_wordcut, wrong_wordcut
+# 				time_swath, correct_swath, wrong_swath = wordseg.swath(origin_data, result)
+# 				print time_swath, correct_swath, wrong_swath
+# 				time_wordcut, correct_wordcut, wrong_wordcut = wordseg.wordcut(origin_data, result)
+# 				print time_wordcut, correct_wordcut, wrong_wordcut
+				wordseg.thaisematic(origin_data, result)
 				break
 			counter = counter+1
 

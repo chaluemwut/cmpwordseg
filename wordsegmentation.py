@@ -1,4 +1,4 @@
-import os, time
+import os, time, urllib2, sys, json
 
 class WordSegmentation(object):
 
@@ -43,7 +43,25 @@ class WordSegmentation(object):
         return self.template_call(msg, result, "swath -u u,u <in.txt> out.txt", '|')
 
     def thaisematic(self, msg, result):
-        pass
+        request = {
+                   'api_key': '547bce78d5568489b44484cc6a9fca49587a45de24d21718175823ad4027e87b',
+                   'method': 'SWATH',
+                   'params': [msg]
+                   }
+        headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "application/json"}
+        params = json.dumps(request)
+# print params
+        headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "application/json"}
+        url = 'https://www.thaisemantics.org/service/rest/'
+        req = urllib2.Request(url, params)
+        req.add_header('Content-type','application/x-www-form-urlencoded')
+        req.add_header('Accept','application/json')
+        u = urllib2.urlopen(req)
+        data = u.read()
+        json_data = json.loads(data)
+        for sep_data in json_data['result']:
+            print sep_data
+        print sep_data
 
     def wordcut(self, msg, result):
         return self.template_call(msg, result, "wordcut <in.txt> out.txt", ' ')
