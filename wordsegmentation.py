@@ -116,7 +116,7 @@ class WordSegmentation(object):
             program_result.append(sep_data)
 #         result_uni = [unicode(a, 'utf-8') for a in result]
         distance = levenshtein([unicode(a, 'utf-8') for a in result], program_result)
-        return total_time, distance
+        return total_time, distance, program_result
 
     def wordcut(self, msg, result):
         trim_msg = msg.replace("//","")
@@ -136,7 +136,7 @@ class WordSegmentation(object):
             out_lst = out.split(separator)
         distance = levenshtein(result, out_lst)
 #         correct, wrong = self.count_answer(result, out_lst)
-        return total_time, distance
+        return total_time, distance, out_lst
 
     def libthai(self, msg, result):
         trim_msg = self.befor_trim(msg)
@@ -152,7 +152,7 @@ class WordSegmentation(object):
         program_result = str_out.split('|')
         uni_result = [unicode(a, 'utf-8') for a in result]
         d = levenshtein(uni_result, program_result)
-        return total_time, d
+        return total_time, d, program_result
 
     def Tlex(self, msg, result):
         client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl')
@@ -165,7 +165,7 @@ class WordSegmentation(object):
         program_result = str_out.split('|')
         uni_result = [unicode(a, 'utf-8') for a in result]
         d = levenshtein(uni_result, program_result)
-        return total_time, d
+        return total_time, d, program_result
     
     def befor_trim(self, msg):
         return msg.replace("//","").replace("\n","")

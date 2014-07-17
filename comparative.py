@@ -1,5 +1,5 @@
 from wordsegmentation import WordSegmentation
-
+from validate_date import *
 # spacial char 
 # <minus> -
 # <space>
@@ -74,13 +74,18 @@ class MainCompare:
 # 				self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)
 									
 				try:					
-					time_swath, d_swath = wordseg.swath(origin_data, result)
-					time_wordcut, d_wordcut = wordseg.wordcut(origin_data, result)
-					time_sem, d_sem = wordseg.thaisematic(origin_data, result)
-					time_tlex, d_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
-					time_libthai, d_libthai = wordseg.libthai(origin_data, result)
+					time_swath, d_swath, out_swath = wordseg.swath(origin_data, result)
+					time_wordcut, d_wordcut, out_wordcut = wordseg.wordcut(origin_data, result)
+					time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
+					time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
+					time_libthai, d_libthai, out_libthai = wordseg.libthai(origin_data, result)
 					self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
 					self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)
+					
+# 					log_data = LogData()
+# 					log_data.
+# 					validate = ValidateData()
+# 					validate.process_log
 				except Exception, e:
 					self.write_erro(str(e))
 				
