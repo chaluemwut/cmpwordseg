@@ -81,22 +81,27 @@ class MainCompare:
 					time_libthai, d_libthai = wordseg.libthai(origin_data, result)
 					self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
 					self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)
-				except Exception:
-					print 'error'
+				except Exception, e:
+					self.write_erro(str(e))
 				
 			counter = counter+1
 			
-	def write_file(self, msg):
-		f = open('time.txt','a+b')
+	def write_erro(self, msg):
+		self.write_file(msg, 'error.txt')		
+			
+	def write_file(self, msg, file_name):
+		print msg
+		f = open(file_name,'a+b')
 		f.write(msg+'\n')
 		f.close()
 
 	def write_output_time(self, time_libthai, time_swath, time_wordcut, time_sem, time_tlex):
 		msg = ','.join([str(time_libthai), str(time_swath), str(time_wordcut), str(time_sem), str(time_tlex)])
-		self.write_file(msg)
+		self.write_file(msg, 'time.txt')
 	
-	def write_output_distance(self, d_swath, d_wordcut, d_sem, d_tlex, d_libthai):
-		print d_swath, d_wordcut, d_sem, d_tlex, d_libthai
+	def write_output_distance(self, d_libthai, d_swath, d_wordcut, d_sem, d_tlex):
+		msg = ','.join([str(d_libthai), str(d_swath), str(d_wordcut), str(d_sem), str(d_tlex)])
+		self.write_file(msg, 'distance.txt')
 
 mainCmp = MainCompare()
 mainCmp.process_data()

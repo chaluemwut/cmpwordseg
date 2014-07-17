@@ -2,7 +2,7 @@
 import os, time, urllib2, json
 from suds.client import Client
 
-def levenshtein(a,b):
+def levenshtein_backup(a,b):
     "Calculates the Levenshtein distance between a and b."
     n, m = len(a), len(b)
     if n > m:
@@ -21,6 +21,30 @@ def levenshtein(a,b):
             current[j] = min(add, delete, change)
             
     return current[n]
+
+def levenshtein(a,b):
+    n, m = len(a), len(b)
+    if n>m:
+        max_len = n
+    else:
+        max_len = m
+    
+    if n > m:
+        # Make sure n <= m, to use O(min(n,m)) space
+        a,b = b,a
+        n,m = m,n
+        
+    current = range(n+1)
+    for i in range(1,m+1):
+        previous, current = current, [i]+[0]*n
+        for j in range(1,n+1):
+            add, delete = previous[j]+1, current[j-1]+1
+            change = previous[j-1]
+            if a[j-1] != b[i-1]:
+                change = change + 1
+            current[j] = min(add, delete, change)
+            
+    return current[n]/float(max_len)
 
 class WordSegmentation(object):
 
@@ -65,9 +89,11 @@ class WordSegmentation(object):
         return correct, wrong
 
     def swath(self, msg, result):
-        return self.template_call(msg, result, "swath -u u,u <in.txt> out.txt", '|')
+        trim_msg = msg.replace("//","").replace("\n","")
+        return self.template_call(trim_msg, result, "swath -u u,u <in.txt> out.txt", '|')
 
     def thaisematic(self, msg, result):
+        msg = self.befor_trim(msg)
         request = {
                    'api_key': '547bce78d5568489b44484cc6a9fca49587a45de24d21718175823ad4027e87b',
                    'method': 'SWATH',
@@ -93,17 +119,21 @@ class WordSegmentation(object):
         return total_time, distance
 
     def wordcut(self, msg, result):
-        return self.template_call(msg, result, "wordcut <in.txt> out.txt", ' ')
+        trim_msg = msg.replace("//","")
+        return self.template_call(trim_msg, result, "wordcut <in.txt> out.txt", ' ')
 
     def template_call(self, msg, result, command, separator):
-        trim_msg = msg.replace("//","").replace("\n","")
-        self.write_file(trim_msg)
+        self.write_file(msg)
         start_time = time.time()
         os.system(command)
         total_time = time.time() - start_time #return in seconds
         out = self.read_file()
         out = out.replace('\n','')
-        out_lst = out.split(separator)
+        if separator == ' ':
+            out_lst_tmp = out.split(separator)
+            out_lst = [' ' if x == '' else x for x in out_lst_tmp]
+        else:
+            out_lst = out.split(separator)
         distance = levenshtein(result, out_lst)
 #         correct, wrong = self.count_answer(result, out_lst)
         return total_time, distance
@@ -143,11 +173,13 @@ class WordSegmentation(object):
     def after_trim(self, msg):
         return msg.replace("\n","")
 
+# wordseg = WordSegmentation()
+# wordseg.thaisematic('วันที่ 15-16 สิงหาคม 2532\n', [])
+
 # u = unicode('ทดสอบ','utf-8')
 # u1 = unicode('ทดสอบ','utf-8')
 # print u
-# print levenshtein([u,'b'], [u1,'b'])
-
+# print levenshtein(['g', 'a'], ['g', 'a', 't'])
 # wordseq = WordSegmentation()
 # wordseq.Tlex('test', [])
 # param = "ทดสอยได้ไหม"

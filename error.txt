@@ -1,0 +1,8 @@
+(502, u'Proxy Error')
+<urlopen error [Errno 110] Connection timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+(502, u'Proxy Error')
+(502, u'Proxy Error')
+(502, u'Proxy Error')
+(503, u'Service Unavailable')
