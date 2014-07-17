@@ -8,6 +8,7 @@ from wordsegmentation import WordSegmentation
 # <equal> =
 # new line \\
 # <quotation> "
+# <full_stop> .
 
 class MainCompare:
 	
@@ -22,6 +23,8 @@ class MainCompare:
 			return ')'
 		elif next_data == '<quotation>/PUNC\n':
 			return '"'
+		elif next_data == '<full_stop>/PUNC\n':
+			return '.'
 		else :
 			return next_data[:next_data.index("/")]
 		
