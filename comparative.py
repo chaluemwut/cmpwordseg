@@ -1,5 +1,6 @@
+import sys, os
 from wordsegmentation import WordSegmentation
-# from validate_date import *
+
 # spacial char 
 # <minus> -
 # <space>
@@ -29,14 +30,15 @@ class MainCompare:
 			return next_data[:next_data.index("/")]
 		
 	
-	def process_data(self):
+	def process_data(self, start):
 		data = []
 		for line in open('orchid97.crp.utf').readlines():
 			data.append(line)
 
-		counter = 0
+		counter = start
 		wordseg = WordSegmentation()
-		for orchid_data in range(len(data)):
+		for orchid_data in range(start, len(data)):
+			self.line_id = counter
 			orchid_data = data[counter]
 			first_char, line_data = orchid_data[:1], orchid_data[1:2]
 			if '%' == first_char:
@@ -48,6 +50,7 @@ class MainCompare:
 				continue
 
 			if first_char == '#' and line_data.isdigit() :
+				self.resume_write(counter)
 				counter = counter+1
 				origin_data = data[counter]
 				if origin_data[-2:] == '\\\n':
@@ -68,31 +71,34 @@ class MainCompare:
 					counter = counter+1
 					next_data = data[counter]
 				
-# 				time_swath, d_swath = wordseg.swath(origin_data, result)
-# 				time_wordcut, d_wordcut = wordseg.wordcut(origin_data, result)
-# 				time_sem, d_sem = wordseg.thaisematic(origin_data, result)
-# 				time_tlex, d_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
-# 				time_libthai, d_libthai = wordseg.libthai(origin_data, result)
-# 				self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
-# 				self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)
-									
 				try:					
 					time_swath, d_swath, out_swath = wordseg.swath(origin_data, result)
 					time_wordcut, d_wordcut, out_wordcut = wordseg.wordcut(origin_data, result)
 					time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
 					time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
 					time_libthai, d_libthai, out_libthai = wordseg.libthai(origin_data, result)
-					self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
-					self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)
 					
-# 					log_data = LogData()
-# 					log_data.
-# 					validate = ValidateData()
-# 					validate.process_log
+					self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
+					self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)					
 				except Exception, e:
-					self.write_erro(str(e))
-				
+					self.write_erro(str(self.line_id)+','+str(e))
 			counter = counter+1
+	
+	def validate_data(self, log_data):
+		pass
+# 		validate = ValidateData()
+# 		validate.process_log(log_data)
+	
+	def read_resume(self):
+		f = open('resume.txt','r')
+		msg = f.read()
+		f.close()
+		return msg
+	
+	def resume_write(self, line):
+		f = open('resume.txt','w')
+		f.write(str(line))
+		f.close()
 			
 	def write_erro(self, msg):
 		self.write_file(msg, 'error.txt')		
@@ -105,11 +111,27 @@ class MainCompare:
 
 	def write_output_time(self, time_libthai, time_swath, time_wordcut, time_sem, time_tlex):
 		msg = ','.join([str(time_libthai), str(time_swath), str(time_wordcut), str(time_sem), str(time_tlex)])
-		self.write_file(msg, 'time.txt')
+		self.write_file(str(self.line_id)+','+msg, 'time.txt')
 	
 	def write_output_distance(self, d_libthai, d_swath, d_wordcut, d_sem, d_tlex):
 		msg = ','.join([str(d_libthai), str(d_swath), str(d_wordcut), str(d_sem), str(d_tlex)])
-		self.write_file(msg, 'distance.txt')
+		self.write_file(str(self.line_id)+','+msg, 'distance.txt')
+
+try :
+	arg = sys.argv[1]
+except Exception, e:
+	arg = ''
+	print 'no arg'
 
 mainCmp = MainCompare()
-mainCmp.process_data()
+if arg == 'resume':
+	print 'resume process...'
+# 	resume_line = mainCmp.read_resume()
+	resume_line = sys.argv[2]
+	mainCmp.process_data(int(resume_line))
+elif arg == 'clean':
+	print 'clean log file'
+	os.system('rm distance.txt time.txt error.txt')
+else:
+	print 'Start new process'
+	mainCmp.process_data(0)

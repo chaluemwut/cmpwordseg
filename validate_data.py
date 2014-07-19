@@ -1,18 +1,22 @@
+import codecs
+
 class ValidateData :
     
     def write_file(self, msg):
         print msg
-        f = open('validate.txt','a+b')
-        f.write(msg+'\n')
-        f.close()
+        with codecs.open('validate.txt','a+b',encoding='utf8') as f:
+            f.write(msg)
+#         f = open('validate.txt','a+b')
+#         f.write(msg+'\n')
+#         f.close()
         
     def process_log(self, log_data):
         self.write_file('******* start *********')
-        self.write_file('log in :',log_data.log_id)
+        self.write_file('log in :'+log_data.log_id)
         self.write_file('----- correct ')
-        self.write_file(','.join(log_data.origin_data))
-        self.write_file('----- libthai')
-        self.write_file(','.join(log_data.libthai))
+        self.write_file(log_data.origin_data)
+#         self.write_file('----- libthai')
+#         self.write_file(','.join(log_data.libthai))
         self.write_file('----- swath')
         self.write_file(','.join(log_data.swath))  
         self.write_file('----- wordcut')
