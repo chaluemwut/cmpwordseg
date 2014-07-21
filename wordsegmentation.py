@@ -90,7 +90,7 @@ class WordSegmentation(object):
 
     def swath(self, msg, result):
         trim_msg = msg.replace("//","").replace("\n","")
-        return self.template_call(trim_msg, result, "swath -u u,u <in.txt> out.txt", '|')
+        return self.template_call(trim_msg, result, "swath -u u,u <in.txt> out.txt")
 
     def thaisematic(self, msg, result):
         msg = self.befor_trim(msg)
@@ -124,20 +124,21 @@ class WordSegmentation(object):
 
     def wordcut(self, msg, result):
         trim_msg = msg.replace("//","")
-        return self.template_call(trim_msg, result, "wordcut <in.txt> out.txt", ' ')
+        return self.template_call(trim_msg, result, "wordcut --delim='|' <in.txt> out.txt")
 
-    def template_call(self, msg, result, command, separator):
+    def template_call(self, msg, result, command):
         self.write_file(msg)
         start_time = time.time()
         os.system(command)
         total_time = time.time() - start_time #return in seconds
         out = self.read_file()
         out = out.replace('\n','')
-        if separator == ' ':
-            out_lst_tmp = out.split(separator)
-            out_lst = [' ' if x == '' else x for x in out_lst_tmp]
-        else:
-            out_lst = out.split(separator)
+#         if separator == ' ':
+#             out_lst_tmp = out.split(separator)
+#             out_lst = [' ' if x == '' else x for x in out_lst_tmp]
+#         else:
+#             out_lst = out.split(separator)
+        out_lst = out.split('|')
         distance = levenshtein(result, out_lst)
 #         correct, wrong = self.count_answer(result, out_lst)
         return total_time, distance, out_lst

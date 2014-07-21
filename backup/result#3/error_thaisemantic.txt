@@ -1,0 +1,72 @@
+29,''
+2030,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2096,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2135,<urlopen error [Errno 110] Connection timed out>
+2213,''
+2296,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+2403,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2423,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2490,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2517,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+2604,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2615,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+2716,The read operation timed out
+2860,[Errno 104] Connection reset by peer
+2893,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+2906,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+3196,<urlopen error _ssl.c:495: The handshake operation timed out>
+3224,''
+3233,<urlopen error _ssl.c:495: The handshake operation timed out>
+3288,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+3332,<urlopen error _ssl.c:495: The handshake operation timed out>
+3517,<urlopen error _ssl.c:495: The handshake operation timed out>
+3577,<urlopen error _ssl.c:495: The handshake operation timed out>
+3597,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+3612,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+3689,<urlopen error _ssl.c:495: The handshake operation timed out>
+3702,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+3761,<urlopen error _ssl.c:495: The handshake operation timed out>
+3771,<urlopen error _ssl.c:495: The handshake operation timed out>
+3781,<urlopen error _ssl.c:495: The handshake operation timed out>
+4064,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+4086,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+4100,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+4366,<urlopen error _ssl.c:495: The handshake operation timed out>
+16476,<urlopen error _ssl.c:495: The handshake operation timed out>
+16500,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+16529,<urlopen error _ssl.c:495: The handshake operation timed out>
+16539,<urlopen error [Errno 110] Connection timed out>
+22493,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+22532,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+22713,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+22718,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+22728,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+22736,''
+22745,The read operation timed out
+26500,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+29488,<urlopen error [Errno 110] Connection timed out>
+29507,<urlopen error [Errno 110] Connection timed out>
+29529,<urlopen error [Errno 110] Connection timed out>
+29548,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+57943,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+60610,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+63272,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+74935,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+75300,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+77228,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+77600,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+86375,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+96629,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
+290933,<urlopen error [Errno 110] Connection timed out>
+328767,<urlopen error [Errno 110] Connection timed out>
+328787,<urlopen error _ssl.c:495: The handshake operation timed out>
+328926,''
+328948,<urlopen error [Errno 110] Connection timed out>
+328976,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+329105,<urlopen error _ssl.c:495: The handshake operation timed out>
+330325,<urlopen error [Errno 110] Connection timed out>
+388881,The read operation timed out
+388918,<urlopen error [Errno 110] Connection timed out>
+388937,<urlopen error [Errno 110] Connection timed out>
+409856,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
+412084,[Errno 1] _ssl.c:1429: error:140940E5:SSL routines:SSL3_READ_BYTES:ssl handshake failure
