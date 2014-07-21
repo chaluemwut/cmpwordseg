@@ -60,7 +60,7 @@ class WordSegmentation(object):
         f = open('thin.txt','w')
         u = unicode(msg, "utf-8")
         f.write(u.encode('tis-620'))
-        f.close()      
+        f.close()     
 
     def read_file(self):
         f = open('out.txt','r')
@@ -107,7 +107,11 @@ class WordSegmentation(object):
         req.add_header('Content-type','application/x-www-form-urlencoded')
         req.add_header('Accept','application/json')
         start_time = time.time()
-        u = urllib2.urlopen(req)
+        try:
+            u = urllib2.urlopen(req, timeout=60*5)
+        except Exception, e:
+            print 'thai semantics time out'
+            raise
         data = u.read()
         json_data = json.loads(data)
         total_time = time.time() - start_time #return in seconds
@@ -155,7 +159,11 @@ class WordSegmentation(object):
         return total_time, d, program_result
 
     def Tlex(self, msg, result):
-        client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl')
+        try :
+            client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl', timeout=60*10)
+        except Exception, e:
+            print 'tlex time out'
+            raise
         msg = self.befor_trim(msg)
         start_time = time.time()
         out = client.service.seg(msg)

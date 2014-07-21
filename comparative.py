@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, time
 from wordsegmentation import WordSegmentation
 
 # spacial char 
@@ -69,19 +69,34 @@ class MainCompare:
 					result_data = self.convert_result(next_data)
 					result.append(result_data)
 					counter = counter+1
+					if counter >= 431325:
+						break
 					next_data = data[counter]
 				
-				try:					
+				try:
+					time_libthai, d_libthai, out_libthai = wordseg.libthai(origin_data, result)				
 					time_swath, d_swath, out_swath = wordseg.swath(origin_data, result)
 					time_wordcut, d_wordcut, out_wordcut = wordseg.wordcut(origin_data, result)
-					time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
-					time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
-					time_libthai, d_libthai, out_libthai = wordseg.libthai(origin_data, result)
-					
+# 					time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)	
+# 					time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
+	
+					try:
+						time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
+					except Exception, e:
+						str_msg_tlex = str(self.line_id)+','+str(e)
+						self.write_error_time_out('error_tlex.txt', str_msg_tlex)
+					try:
+						time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
+					except Exception, e:
+						str_msg_sem = str(self.line_id)+','+str(e)
+						self.write_error_time_out('error_thaisemantic.txt', str_msg_sem)
+						
 					self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
-					self.write_output_distance(d_swath, d_wordcut, d_sem, d_tlex, d_libthai)					
+					self.write_output_distance(d_libthai, d_swath, d_wordcut, d_sem, d_tlex)
 				except Exception, e:
 					self.write_erro(str(self.line_id)+','+str(e))
+			if counter >= 431325:
+				break
 			counter = counter+1
 	
 	def validate_data(self, log_data):
@@ -101,7 +116,10 @@ class MainCompare:
 		f.close()
 			
 	def write_erro(self, msg):
-		self.write_file(msg, 'error.txt')		
+		self.write_file(msg, 'error.txt')
+		
+	def write_error_time_out(self, file_name, msg):
+		self.write_file(msg, file_name)		
 			
 	def write_file(self, msg, file_name):
 		print msg
@@ -122,16 +140,21 @@ try :
 except Exception, e:
 	arg = ''
 	print 'no arg'
-
+	
+print '************** Start *****************'
 mainCmp = MainCompare()
+start_time = time.time()
 if arg == 'resume':
 	print 'resume process...'
-# 	resume_line = mainCmp.read_resume()
-	resume_line = sys.argv[2]
+	resume_line = mainCmp.read_resume()
+	print 'resume start with ',resume_line
 	mainCmp.process_data(int(resume_line))
 elif arg == 'clean':
 	print 'clean log file'
-	os.system('rm distance.txt time.txt error.txt')
+	os.system('rm distance.txt time.txt error.txt error_tlex.txt error_thaisemantic.txt resume.txt')
 else:
 	print 'Start new process'
 	mainCmp.process_data(0)
+total_time = time.time() - start_time #return in seconds
+print 'Execution time : ',total_time*0.000277778,' Hour'
+print '**************** End *****************'
