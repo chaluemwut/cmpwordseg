@@ -1,3 +1,5 @@
 
 class CRF:
-    pass
+    
+    def create_model(self):
+        print 'create model'
