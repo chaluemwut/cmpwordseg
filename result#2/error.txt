@@ -1,145 +1,345 @@
-16962,(502, u'Proxy Error')
-41048,(502, u'Proxy Error')
-64224,(502, u'Proxy Error')
-87197,(502, u'Proxy Error')
-109103,(503, u'Service Temporarily Unavailable')
-109129,(503, u'Service Temporarily Unavailable')
-109144,(503, u'Service Temporarily Unavailable')
-109172,(503, u'Service Temporarily Unavailable')
-109187,(503, u'Service Temporarily Unavailable')
-109205,(503, u'Service Temporarily Unavailable')
-109222,(503, u'Service Temporarily Unavailable')
-109253,(503, u'Service Temporarily Unavailable')
-109270,(503, u'Service Temporarily Unavailable')
-109290,(503, u'Service Temporarily Unavailable')
-109313,(503, u'Service Temporarily Unavailable')
-109352,(503, u'Service Temporarily Unavailable')
-109399,(503, u'Service Temporarily Unavailable')
-109404,(503, u'Service Temporarily Unavailable')
-109424,(503, u'Service Temporarily Unavailable')
-109437,(503, u'Service Temporarily Unavailable')
-109450,(503, u'Service Temporarily Unavailable')
-109469,(503, u'Service Temporarily Unavailable')
-109484,(503, u'Service Temporarily Unavailable')
-109499,(503, u'Service Temporarily Unavailable')
-109511,(503, u'Service Temporarily Unavailable')
-109526,(503, u'Service Temporarily Unavailable')
-109538,(503, u'Service Temporarily Unavailable')
-109556,(503, u'Service Temporarily Unavailable')
-109569,(503, u'Service Temporarily Unavailable')
-109594,(503, u'Service Temporarily Unavailable')
-109612,(503, u'Service Temporarily Unavailable')
-109637,(503, u'Service Temporarily Unavailable')
-109653,(503, u'Service Temporarily Unavailable')
-109692,(503, u'Service Temporarily Unavailable')
-109713,(503, u'Service Temporarily Unavailable')
-109751,(503, u'Service Temporarily Unavailable')
-109760,(503, u'Service Temporarily Unavailable')
-109774,(503, u'Service Temporarily Unavailable')
-109782,(503, u'Service Temporarily Unavailable')
-109797,(503, u'Service Temporarily Unavailable')
-109822,(503, u'Service Temporarily Unavailable')
-109864,(503, u'Service Temporarily Unavailable')
-109879,(503, u'Service Temporarily Unavailable')
-109892,(503, u'Service Temporarily Unavailable')
-109948,(503, u'Service Temporarily Unavailable')
-128186,<urlopen error timed out>
-128911,(502, u'Proxy Error')
-145560,<urlopen error [Errno 110] Connection timed out>
-146386,<urlopen error timed out>
-149482,(502, u'Proxy Error')
-173923,(502, u'Proxy Error')
-196093,(503, u'Service Temporarily Unavailable')
-196109,(503, u'Service Temporarily Unavailable')
-196115,(503, u'Service Temporarily Unavailable')
-196119,(503, u'Service Temporarily Unavailable')
-196125,(503, u'Service Temporarily Unavailable')
-196129,(503, u'Service Temporarily Unavailable')
-196135,(503, u'Service Temporarily Unavailable')
-196139,(503, u'Service Temporarily Unavailable')
-196145,(503, u'Service Temporarily Unavailable')
-196149,(503, u'Service Temporarily Unavailable')
-196155,(503, u'Service Temporarily Unavailable')
-196163,(503, u'Service Temporarily Unavailable')
-196169,(503, u'Service Temporarily Unavailable')
-196173,(503, u'Service Temporarily Unavailable')
-196179,(503, u'Service Temporarily Unavailable')
-196183,(503, u'Service Temporarily Unavailable')
-196189,(503, u'Service Temporarily Unavailable')
-196193,(503, u'Service Temporarily Unavailable')
-196199,(503, u'Service Temporarily Unavailable')
-196203,(503, u'Service Temporarily Unavailable')
-196209,(503, u'Service Temporarily Unavailable')
-196217,(503, u'Service Temporarily Unavailable')
-196223,(503, u'Service Temporarily Unavailable')
-196239,(503, u'Service Temporarily Unavailable')
-196246,(503, u'Service Temporarily Unavailable')
-196281,(503, u'Service Temporarily Unavailable')
-196299,(503, u'Service Temporarily Unavailable')
-196311,(503, u'Service Temporarily Unavailable')
-196357,(503, u'Service Temporarily Unavailable')
-196375,(503, u'Service Temporarily Unavailable')
-196387,(503, u'Service Temporarily Unavailable')
-196400,(503, u'Service Temporarily Unavailable')
-196457,(503, u'Service Temporarily Unavailable')
-196467,(503, u'Service Temporarily Unavailable')
-196473,(503, u'Service Temporarily Unavailable')
-196478,(503, u'Service Temporarily Unavailable')
-196485,(503, u'Service Temporarily Unavailable')
-196501,(503, u'Service Temporarily Unavailable')
-196517,(503, u'Service Temporarily Unavailable')
-196528,(503, u'Service Temporarily Unavailable')
-196537,(503, u'Service Temporarily Unavailable')
-217401,(502, u'Proxy Error')
-238524,(502, u'Proxy Error')
-261777,(502, u'Proxy Error')
-276334,<urlopen error [Errno 8] _ssl.c:510: EOF occurred in violation of protocol>
-283790,(502, u'Proxy Error')
-305252,(503, u'Service Temporarily Unavailable')
-305264,(503, u'Service Temporarily Unavailable')
-305274,(503, u'Service Temporarily Unavailable')
-305282,(503, u'Service Temporarily Unavailable')
-305300,(503, u'Service Temporarily Unavailable')
-305323,(503, u'Service Temporarily Unavailable')
-305337,(503, u'Service Temporarily Unavailable')
-305350,(503, u'Service Temporarily Unavailable')
-305360,(503, u'Service Temporarily Unavailable')
-305375,(503, u'Service Temporarily Unavailable')
-305399,(503, u'Service Temporarily Unavailable')
-305413,(503, u'Service Temporarily Unavailable')
-305437,(503, u'Service Temporarily Unavailable')
-305459,(503, u'Service Temporarily Unavailable')
-305471,(503, u'Service Temporarily Unavailable')
-305487,(503, u'Service Temporarily Unavailable')
-305508,(503, u'Service Temporarily Unavailable')
-305535,(503, u'Service Temporarily Unavailable')
-305551,(503, u'Service Temporarily Unavailable')
-305580,(503, u'Service Temporarily Unavailable')
-305603,(503, u'Service Temporarily Unavailable')
-305617,(503, u'Service Temporarily Unavailable')
-305637,(503, u'Service Temporarily Unavailable')
-305659,(503, u'Service Temporarily Unavailable')
-305665,(503, u'Service Temporarily Unavailable')
-305679,(503, u'Service Temporarily Unavailable')
-305687,(503, u'Service Temporarily Unavailable')
-305709,(503, u'Service Temporarily Unavailable')
-305721,(503, u'Service Temporarily Unavailable')
-305730,(503, u'Service Temporarily Unavailable')
-305742,(503, u'Service Temporarily Unavailable')
-305753,(503, u'Service Temporarily Unavailable')
-305761,(503, u'Service Temporarily Unavailable')
-305776,(503, u'Service Temporarily Unavailable')
-305785,(503, u'Service Temporarily Unavailable')
-305793,(503, u'Service Temporarily Unavailable')
-305804,(503, u'Service Temporarily Unavailable')
-305809,(503, u'Service Temporarily Unavailable')
-305821,(503, u'Service Temporarily Unavailable')
-305837,(503, u'Service Temporarily Unavailable')
-305859,(503, u'Service Temporarily Unavailable')
-325938,(502, u'Proxy Error')
-345967,(502, u'Proxy Error')
-368101,(502, u'Proxy Error')
-388008,<urlopen error timed out>
-388673,(502, u'Proxy Error')
-405340,<urlopen error [Errno 110] Connection timed out>
-406348,<urlopen error timed out>
+main error : 117264,'str' object is not callable
+main error : 305659,'str' object is not callable
+main error : 305665,'str' object is not callable
+main error : 305679,'str' object is not callable
+main error : 305687,'str' object is not callable
+main error : 305709,'str' object is not callable
+main error : 305721,'str' object is not callable
+main error : 305730,'str' object is not callable
+main error : 305742,'str' object is not callable
+main error : 305753,'str' object is not callable
+main error : 305761,'str' object is not callable
+main error : 305776,'str' object is not callable
+main error : 305785,'str' object is not callable
+main error : 305793,'str' object is not callable
+main error : 305804,'str' object is not callable
+main error : 305809,'str' object is not callable
+main error : 305821,'str' object is not callable
+main error : 305837,'str' object is not callable
+main error : 305859,'str' object is not callable
+main error : 305914,'str' object is not callable
+main error : 305922,'str' object is not callable
+main error : 305929,'str' object is not callable
+main error : 305944,'str' object is not callable
+main error : 305957,'str' object is not callable
+main error : 305970,'str' object is not callable
+main error : 305986,'str' object is not callable
+main error : 306000,'str' object is not callable
+main error : 306026,'str' object is not callable
+main error : 306036,'str' object is not callable
+main error : 306059,'str' object is not callable
+main error : 306070,'str' object is not callable
+main error : 306080,'str' object is not callable
+main error : 306101,'str' object is not callable
+main error : 306123,'str' object is not callable
+main error : 306138,'str' object is not callable
+main error : 306150,'str' object is not callable
+main error : 306163,'str' object is not callable
+main error : 306181,'str' object is not callable
+main error : 306210,'str' object is not callable
+main error : 306227,'str' object is not callable
+main error : 306241,'str' object is not callable
+main error : 306265,'str' object is not callable
+main error : 306279,'str' object is not callable
+main error : 306293,'str' object is not callable
+main error : 306323,'str' object is not callable
+main error : 306346,'str' object is not callable
+main error : 306369,'str' object is not callable
+main error : 306396,'str' object is not callable
+main error : 306424,'str' object is not callable
+main error : 306437,'str' object is not callable
+main error : 306450,'str' object is not callable
+main error : 306466,'str' object is not callable
+main error : 306485,'str' object is not callable
+main error : 306504,'str' object is not callable
+main error : 306518,'str' object is not callable
+main error : 306529,'str' object is not callable
+main error : 306545,'str' object is not callable
+main error : 306556,'str' object is not callable
+main error : 306572,'str' object is not callable
+main error : 306584,'str' object is not callable
+main error : 306601,'str' object is not callable
+main error : 306611,'str' object is not callable
+main error : 306621,'str' object is not callable
+main error : 306642,'str' object is not callable
+main error : 306653,'str' object is not callable
+main error : 306671,'str' object is not callable
+main error : 306682,'str' object is not callable
+main error : 306689,'str' object is not callable
+main error : 306703,'str' object is not callable
+main error : 306726,'str' object is not callable
+main error : 306731,'str' object is not callable
+main error : 306744,'str' object is not callable
+main error : 306793,'str' object is not callable
+main error : 306807,'str' object is not callable
+main error : 306822,'str' object is not callable
+main error : 306845,'str' object is not callable
+main error : 306853,'str' object is not callable
+main error : 306869,'str' object is not callable
+main error : 306887,'str' object is not callable
+main error : 306897,'str' object is not callable
+main error : 306908,'str' object is not callable
+main error : 306917,'str' object is not callable
+main error : 306928,'str' object is not callable
+main error : 306945,'str' object is not callable
+main error : 306963,'str' object is not callable
+main error : 306974,'str' object is not callable
+main error : 306986,'str' object is not callable
+main error : 307005,'str' object is not callable
+main error : 307020,'str' object is not callable
+main error : 307031,'str' object is not callable
+main error : 307037,'str' object is not callable
+main error : 307049,'str' object is not callable
+main error : 307074,'str' object is not callable
+main error : 307085,'str' object is not callable
+main error : 307106,'str' object is not callable
+main error : 307123,'str' object is not callable
+main error : 307149,'str' object is not callable
+main error : 307157,'str' object is not callable
+main error : 307167,'str' object is not callable
+main error : 307183,'str' object is not callable
+main error : 307204,'str' object is not callable
+main error : 307258,'str' object is not callable
+main error : 307276,'str' object is not callable
+main error : 307290,'str' object is not callable
+main error : 307334,'str' object is not callable
+main error : 307347,'str' object is not callable
+main error : 307358,'str' object is not callable
+main error : 307369,'str' object is not callable
+main error : 307376,'str' object is not callable
+main error : 307406,'str' object is not callable
+main error : 307418,'str' object is not callable
+main error : 307426,'str' object is not callable
+main error : 307442,'str' object is not callable
+main error : 307451,'str' object is not callable
+main error : 307475,'str' object is not callable
+main error : 307487,'str' object is not callable
+main error : 307500,'str' object is not callable
+main error : 307513,'str' object is not callable
+main error : 307532,'str' object is not callable
+main error : 307540,'str' object is not callable
+main error : 307551,'str' object is not callable
+main error : 307561,'str' object is not callable
+main error : 307571,'str' object is not callable
+main error : 307584,'str' object is not callable
+main error : 307596,'str' object is not callable
+main error : 307603,'str' object is not callable
+main error : 307627,'str' object is not callable
+main error : 307635,'str' object is not callable
+main error : 307646,'str' object is not callable
+main error : 307656,'str' object is not callable
+main error : 307666,'str' object is not callable
+main error : 307679,'str' object is not callable
+main error : 307691,'str' object is not callable
+main error : 307705,'str' object is not callable
+main error : 307729,'str' object is not callable
+main error : 307737,'str' object is not callable
+main error : 307748,'str' object is not callable
+main error : 307757,'str' object is not callable
+main error : 307769,'str' object is not callable
+main error : 307781,'str' object is not callable
+main error : 307789,'str' object is not callable
+main error : 307811,'str' object is not callable
+main error : 307819,'str' object is not callable
+main error : 307836,'str' object is not callable
+main error : 307847,'str' object is not callable
+main error : 307863,'str' object is not callable
+main error : 307875,'str' object is not callable
+main error : 307886,'str' object is not callable
+main error : 307899,'str' object is not callable
+main error : 307914,'str' object is not callable
+main error : 307923,'str' object is not callable
+main error : 307942,'str' object is not callable
+main error : 307976,'str' object is not callable
+main error : 307998,'str' object is not callable
+main error : 308009,'str' object is not callable
+main error : 308017,'str' object is not callable
+main error : 308022,'str' object is not callable
+main error : 308041,'str' object is not callable
+main error : 308061,'str' object is not callable
+main error : 308109,'str' object is not callable
+main error : 308132,'str' object is not callable
+main error : 308146,'str' object is not callable
+main error : 308170,'str' object is not callable
+main error : 308180,'str' object is not callable
+main error : 308192,'str' object is not callable
+main error : 308207,'str' object is not callable
+main error : 308236,'str' object is not callable
+main error : 308244,'str' object is not callable
+main error : 308255,'str' object is not callable
+main error : 308271,'str' object is not callable
+main error : 308285,'str' object is not callable
+main error : 308303,'str' object is not callable
+main error : 308324,'str' object is not callable
+main error : 308363,'str' object is not callable
+main error : 308374,'str' object is not callable
+main error : 308395,'str' object is not callable
+main error : 308408,'str' object is not callable
+main error : 308430,'str' object is not callable
+main error : 308442,'str' object is not callable
+main error : 308523,'str' object is not callable
+main error : 308539,'str' object is not callable
+main error : 308559,'str' object is not callable
+main error : 308583,'str' object is not callable
+main error : 308600,'str' object is not callable
+main error : 308620,'str' object is not callable
+main error : 308639,'str' object is not callable
+main error : 308651,'str' object is not callable
+main error : 308664,'str' object is not callable
+main error : 308677,'str' object is not callable
+main error : 308699,'str' object is not callable
+main error : 308715,'str' object is not callable
+main error : 308733,'str' object is not callable
+main error : 308747,'str' object is not callable
+main error : 308760,'str' object is not callable
+main error : 308789,'str' object is not callable
+main error : 308803,'str' object is not callable
+main error : 308826,'str' object is not callable
+main error : 308847,'str' object is not callable
+main error : 308865,'str' object is not callable
+main error : 308876,'str' object is not callable
+main error : 308889,'str' object is not callable
+main error : 308900,'str' object is not callable
+main error : 308912,'str' object is not callable
+main error : 308946,'str' object is not callable
+main error : 308961,'str' object is not callable
+main error : 308985,'str' object is not callable
+main error : 308999,'str' object is not callable
+main error : 309012,'str' object is not callable
+main error : 309025,'str' object is not callable
+main error : 309033,'str' object is not callable
+main error : 309044,'str' object is not callable
+main error : 309056,'str' object is not callable
+main error : 309064,'str' object is not callable
+main error : 309080,'str' object is not callable
+main error : 309106,'str' object is not callable
+main error : 309125,'str' object is not callable
+main error : 309134,'str' object is not callable
+main error : 309153,'str' object is not callable
+main error : 309178,'str' object is not callable
+main error : 309192,'str' object is not callable
+main error : 309211,'str' object is not callable
+main error : 309233,'str' object is not callable
+main error : 309246,'str' object is not callable
+main error : 309297,'str' object is not callable
+main error : 309319,'str' object is not callable
+main error : 309330,'str' object is not callable
+main error : 309352,'str' object is not callable
+main error : 309372,'str' object is not callable
+main error : 309387,'str' object is not callable
+main error : 309399,'str' object is not callable
+main error : 309413,'str' object is not callable
+main error : 309433,'str' object is not callable
+main error : 309457,'str' object is not callable
+main error : 309482,'str' object is not callable
+main error : 309517,'str' object is not callable
+main error : 309534,'str' object is not callable
+main error : 309550,'str' object is not callable
+main error : 309569,'str' object is not callable
+main error : 309577,'str' object is not callable
+main error : 309593,'str' object is not callable
+main error : 309603,'str' object is not callable
+main error : 309621,'str' object is not callable
+main error : 309639,'str' object is not callable
+main error : 309651,'str' object is not callable
+main error : 309659,'str' object is not callable
+main error : 309678,'str' object is not callable
+main error : 309693,'str' object is not callable
+main error : 309709,'str' object is not callable
+main error : 309729,'str' object is not callable
+main error : 309756,'str' object is not callable
+main error : 309762,'str' object is not callable
+main error : 309773,'str' object is not callable
+main error : 309826,'str' object is not callable
+main error : 309834,'str' object is not callable
+main error : 309859,'str' object is not callable
+main error : 309881,'str' object is not callable
+main error : 309901,'str' object is not callable
+main error : 309915,'str' object is not callable
+main error : 309928,'str' object is not callable
+main error : 309941,'str' object is not callable
+main error : 309950,'str' object is not callable
+main error : 309959,'str' object is not callable
+main error : 309968,'str' object is not callable
+main error : 309980,'str' object is not callable
+main error : 309994,'str' object is not callable
+main error : 310009,'str' object is not callable
+main error : 310024,'str' object is not callable
+main error : 310047,'str' object is not callable
+main error : 310063,'str' object is not callable
+main error : 310088,'str' object is not callable
+main error : 310119,'str' object is not callable
+main error : 310141,'str' object is not callable
+main error : 310157,'str' object is not callable
+main error : 310176,'str' object is not callable
+main error : 310204,'str' object is not callable
+main error : 310263,'str' object is not callable
+main error : 310278,'str' object is not callable
+main error : 310314,'str' object is not callable
+main error : 310345,'str' object is not callable
+main error : 310357,'str' object is not callable
+main error : 310432,'str' object is not callable
+main error : 310464,'str' object is not callable
+main error : 310476,'str' object is not callable
+main error : 310488,'str' object is not callable
+main error : 310507,'str' object is not callable
+main error : 310528,'str' object is not callable
+main error : 310547,'str' object is not callable
+main error : 310563,'str' object is not callable
+main error : 310587,'str' object is not callable
+main error : 310610,'str' object is not callable
+main error : 310619,'str' object is not callable
+main error : 310649,'str' object is not callable
+main error : 310661,'str' object is not callable
+main error : 310689,'str' object is not callable
+main error : 310717,'str' object is not callable
+main error : 310808,'str' object is not callable
+main error : 310819,'str' object is not callable
+main error : 310852,'str' object is not callable
+main error : 310896,'str' object is not callable
+main error : 310925,'str' object is not callable
+main error : 310942,'str' object is not callable
+main error : 310971,'str' object is not callable
+main error : 310979,'str' object is not callable
+main error : 310995,'str' object is not callable
+main error : 311078,'str' object is not callable
+main error : 311103,'str' object is not callable
+main error : 311124,'str' object is not callable
+main error : 311169,'str' object is not callable
+main error : 311190,'str' object is not callable
+main error : 311211,'str' object is not callable
+main error : 311220,'str' object is not callable
+main error : 311232,'str' object is not callable
+main error : 311240,'str' object is not callable
+main error : 311254,'str' object is not callable
+main error : 311266,'str' object is not callable
+main error : 311279,'str' object is not callable
+main error : 311370,'str' object is not callable
+main error : 311388,'str' object is not callable
+main error : 311423,'str' object is not callable
+main error : 311444,'str' object is not callable
+main error : 311463,'str' object is not callable
+main error : 311478,'str' object is not callable
+main error : 311515,'str' object is not callable
+main error : 311565,'str' object is not callable
+main error : 311577,'str' object is not callable
+main error : 311608,'str' object is not callable
+main error : 311620,'str' object is not callable
+main error : 311650,'str' object is not callable
+main error : 311692,'str' object is not callable
+main error : 311700,'str' object is not callable
+main error : 311714,'str' object is not callable
+main error : 311728,'str' object is not callable
+main error : 311752,'str' object is not callable
+main error : 311775,'str' object is not callable
+main error : 314427,'str' object is not callable
+main error : 319187,'str' object is not callable
+main error : 319829,'str' object is not callable
+main error : 327067,'str' object is not callable
+main error : 336845,'str' object is not callable
+main error : 343957,'str' object is not callable
+main error : 345373,'str' object is not callable
+main error : 370564,'str' object is not callable
+main error : 387164,'str' object is not callable
+main error : 412316,'str' object is not callable
+main error : 421424,'str' object is not callable

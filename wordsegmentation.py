@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-import os, time, urllib2, json
+import os, time, urllib2, urllib, json
 from suds.client import Client
 
 def levenshtein_backup(a,b):
@@ -67,6 +67,15 @@ class WordSegmentation(object):
         msg = f.read()
         f.close()
         return msg
+    
+    def write_error_time_out(self, file_name, msg):
+        self.write_file_name(msg, file_name)        
+            
+    def write_file_name(self, msg, file_name):
+        print msg
+        f = open(file_name,'a+b')
+        f.write(msg+'\n')
+        f.close()
 
     def count_array(self, base, target):
         correct=0
@@ -88,11 +97,7 @@ class WordSegmentation(object):
             wrong = wrong+(len(ans_algo)-len(ans_correct))
         return correct, wrong
 
-    def swath(self, msg, result):
-        trim_msg = msg.replace("//","").replace("\n","")
-        return self.template_call(trim_msg, result, "swath -u u,u <in.txt> out.txt")
-
-    def thaisematic(self, msg, result):
+    def thaisematic(self, msg, line_id):
         msg = self.befor_trim(msg)
         request = {
                    'api_key': '547bce78d5568489b44484cc6a9fca49587a45de24d21718175823ad4027e87b',
@@ -108,25 +113,50 @@ class WordSegmentation(object):
         req.add_header('Accept','application/json')
         start_time = time.time()
         try:
-            u = urllib2.urlopen(req, timeout=60*5)
+            u = urllib2.urlopen(req, timeout=60*20)
+            data = u.read()
+            json_data = json.loads(data)
+            total_time = time.time() - start_time #return in seconds
+            program_result = []
+            for sep_data in json_data['result']:
+                program_result.append(sep_data)
+#             uni_program_result = [unicode(a, 'utf-8') for a in program_result]
+            return total_time, program_result
         except Exception, e:
-            print 'thai semantics time out'
-            raise
-        data = u.read()
-        json_data = json.loads(data)
-        total_time = time.time() - start_time #return in seconds
-        program_result = []
-        for sep_data in json_data['result']:
-            program_result.append(sep_data)
-#         result_uni = [unicode(a, 'utf-8') for a in result]
-        distance = levenshtein([unicode(a, 'utf-8') for a in result], program_result)
-        return total_time, distance, program_result
+            print 'thai semantic error'
+            total_time = time.time() - start_time #return in seconds
+            msg = str(line_id)+','+str(e)
+            self.write_error_time_out('error_thaisemantic.txt', msg)
+            return total_time, []
+#             raise
 
-    def wordcut(self, msg, result):
+
+    def swath(self, msg):
+        trim_msg = msg.replace("//","").replace("\n","")
+        return self.template_call(trim_msg, "swath -u u,u <in.txt> out.txt")
+    
+    def wordcut(self, msg):
         trim_msg = msg.replace("//","")
-        return self.template_call(trim_msg, result, "wordcut --delim='|' <in.txt> out.txt")
+        return self.template_call(trim_msg, "wordcut --delim='|' <in.txt> out.txt")
 
-    def template_call(self, msg, result, command):
+    def libthai(self, msg):
+        trim_msg = self.befor_trim(msg)
+        self.write_file_th(trim_msg)
+        u = unicode("./libthai", "utf-8")
+        start_time = time.time()
+        os.system(u.encode('tis-620'))
+        total_time = time.time() - start_time #return in seconds
+        f = open('thout.txt','r')
+        str_out = f.read()
+        f.close()
+        str_out = str_out.decode('tis-620')
+        program_result = str_out.split('|')
+#         uni_program_result = [unicode(a,'utf-8') for a in program_result]
+#         uni_result = [unicode(a, 'utf-8') for a in result]
+#         d = levenshtein(uni_result, program_result)
+        return total_time, program_result
+    
+    def template_call(self, msg, command):
         self.write_file(msg)
         start_time = time.time()
         os.system(command)
@@ -139,42 +169,67 @@ class WordSegmentation(object):
 #         else:
 #             out_lst = out.split(separator)
         out_lst = out.split('|')
-        distance = levenshtein(result, out_lst)
+#         distance = levenshtein(result, out_lst)
 #         correct, wrong = self.count_answer(result, out_lst)
-        return total_time, distance, out_lst
+        uni_out_list = [unicode(a, 'utf-8') for a in out_lst]
+        return total_time, uni_out_list
 
-    def libthai(self, msg, result):
-        trim_msg = self.befor_trim(msg)
-        self.write_file_th(trim_msg)
-        u = unicode("./libthai", "utf-8")
-        start_time = time.time()
-        os.system(u.encode('tis-620'))
-        total_time = time.time() - start_time #return in seconds
-        f = open('thout.txt','r')
-        str_out = f.read()
-        f.close()
-        str_out = str_out.decode('tis-620')
-        program_result = str_out.split('|')
-        uni_result = [unicode(a, 'utf-8') for a in result]
-        d = levenshtein(uni_result, program_result)
-        return total_time, d, program_result
-
-    def Tlex(self, msg, result):
-        try :
-            client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl', timeout=60*10)
-        except Exception, e:
-            print 'tlex time out'
-            raise
+#     def Tlex2(self, msg, result):
+#         try :
+#             client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl', timeout=60*20)
+# #             client.options.cache.clear()
+#         except Exception, e:
+# #             print 'tlex time out'
+#             raise
+#         msg = self.befor_trim(msg)
+#         start_time = time.time()
+#         out = client.service.seg(msg)
+#         total_time = time.time() - start_time #return in seconds
+#         str_out = self.after_trim(out)
+#         str_out = str_out[:len(str_out)-1]
+#         program_result = str_out.split('|')
+#         uni_result = [unicode(a, 'utf-8') for a in result]
+#         d = levenshtein(uni_result, program_result)
+#         return total_time, d, program_result
+    
+    def NewTlexs(self, msg, line_id):
         msg = self.befor_trim(msg)
         start_time = time.time()
-        out = client.service.seg(msg)
-        total_time = time.time() - start_time #return in seconds
-        str_out = self.after_trim(out)
-        str_out = str_out[:len(str_out)-1]
-        program_result = str_out.split('|')
-        uni_result = [unicode(a, 'utf-8') for a in result]
-        d = levenshtein(uni_result, program_result)
-        return total_time, d, program_result
+        str = 'http://www.sansarn.com/api/tlex.php?key=ca3e310a81698286f5c2f71c367c9fee&text='+urllib.quote(msg)
+        try :
+            u = urllib2.urlopen(str)
+            data = u.read()
+            total_time = time.time() - start_time #return in seconds
+            data = data[:len(data)-1]
+            result = data.split('|')
+            return total_time, result
+        except Exception, e:
+            print 'tlex error'
+            total_time = time.time() - start_time #return in seconds
+            msg = str(line_id)+','+str(e)
+            self.write_error_time_out('error_tlex.txt', msg)            
+            return total_time, []                  
+    
+#     def Tlex(self, msg, line_id):
+#         msg = self.befor_trim(msg)
+#         start_time = time.time()
+#         try :
+#             client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl', timeout=60*20)
+# #             client.options.cache.clear()
+#             uni_msg = unicode(msg,'utf-8')
+#             out = client.service.seg(uni_msg)
+#             total_time = time.time() - start_time #return in seconds
+#             str_out = self.after_trim(out)
+#             str_out = str_out[:len(str_out)-1]
+#             program_result = str_out.split('|')
+# #             uni_result = [unicode(a, 'utf-8') for a in result]
+#             return total_time, program_result
+#         except Exception, e:
+#             print 'tlex error'
+#             total_time = time.time() - start_time #return in seconds
+#             msg = str(line_id)+','+str(e)
+#             self.write_error_time_out('error_tlex.txt', msg)
+#             return total_time, []
     
     def befor_trim(self, msg):
         return msg.replace("//","").replace("\n","")
@@ -182,7 +237,12 @@ class WordSegmentation(object):
     def after_trim(self, msg):
         return msg.replace("\n","")
 
+
+# str =  urllib.quote('ทดสอบ')
+# print str
+# newstr= str.encode('utf-8')
 # wordseg = WordSegmentation()
+# wordseg.NewTlexs(urllib.quote('ทดสอบ'),'test')
 # wordseg.thaisematic('วันที่ 15-16 สิงหาคม 2532\n', [])
 
 # u = unicode('ทดสอบ','utf-8')
@@ -201,4 +261,25 @@ class WordSegmentation(object):
 # f = open('test.txt','w')
 # f.write(u.encode('tis620'))
 # f.close()
+
+#                     time_libthai, d_libthai, out_libthai = wordseg.libthai(origin_data, result)                
+#                     time_swath, d_swath, out_swath = wordseg.swath(origin_data, result)
+#                     time_wordcut, d_wordcut, out_wordcut = wordseg.wordcut(origin_data, result)
+#     
+#                     try:
+#                         time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
+#                     except Exception, e:
+#                         str_msg_tlex = str(self.line_id)+','+str(e)
+#                         self.write_error_time_out('error_tlex.txt', str_msg_tlex)
+#                     
+#                     try:
+#                         time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
+#                     except Exception, e:
+#                         str_msg_sem = str(self.line_id)+','+str(e)
+#                         self.write_error_time_out('error_thaisemantic.txt', str_msg_sem)
+#                         time_sem = 1200
+#                         d_sem = 1
+#                         
+#                     self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
+#                     self.write_output_distance(d_libthai, d_swath, d_wordcut, d_sem, d_tlex)
 

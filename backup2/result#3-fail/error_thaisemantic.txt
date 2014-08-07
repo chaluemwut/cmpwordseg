@@ -1,0 +1,3 @@
+126602,<urlopen error [Errno 110] Connection timed out>
+350580,<urlopen error _ssl.c:495: The handshake operation timed out>
+402897,<urlopen error [Errno 110] Connection timed out>
