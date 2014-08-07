@@ -179,6 +179,8 @@ if arg == 'resume':
 elif arg == 'clean':
 	print 'clean log file'
 	os.system('rm compute.txt time.txt error_tlex.txt error_thaisemantic.txt resume.txt')
+elif arg == 'model':
+	print 'create crf model'
 else:
 	print 'Start new process'
 	mainCmp.process_data(0)
