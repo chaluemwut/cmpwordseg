@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import os, time, urllib2, urllib, json
 from suds.client import Client
+from crf import CRF
 
 def levenshtein_backup(a,b):
     "Calculates the Levenshtein distance between a and b."
@@ -151,9 +152,6 @@ class WordSegmentation(object):
         f.close()
         str_out = str_out.decode('tis-620')
         program_result = str_out.split('|')
-#         uni_program_result = [unicode(a,'utf-8') for a in program_result]
-#         uni_result = [unicode(a, 'utf-8') for a in result]
-#         d = levenshtein(uni_result, program_result)
         return total_time, program_result
     
     def template_call(self, msg, command):
@@ -173,24 +171,6 @@ class WordSegmentation(object):
 #         correct, wrong = self.count_answer(result, out_lst)
         uni_out_list = [unicode(a, 'utf-8') for a in out_lst]
         return total_time, uni_out_list
-
-#     def Tlex2(self, msg, result):
-#         try :
-#             client = Client('http://www.sansarn.com/WSeg/wsdl/BnSeg.wsdl', timeout=60*20)
-# #             client.options.cache.clear()
-#         except Exception, e:
-# #             print 'tlex time out'
-#             raise
-#         msg = self.befor_trim(msg)
-#         start_time = time.time()
-#         out = client.service.seg(msg)
-#         total_time = time.time() - start_time #return in seconds
-#         str_out = self.after_trim(out)
-#         str_out = str_out[:len(str_out)-1]
-#         program_result = str_out.split('|')
-#         uni_result = [unicode(a, 'utf-8') for a in result]
-#         d = levenshtein(uni_result, program_result)
-#         return total_time, d, program_result
     
     def NewTlexs(self, msg, line_id):
         msg = self.befor_trim(msg)
@@ -230,56 +210,22 @@ class WordSegmentation(object):
 #             msg = str(line_id)+','+str(e)
 #             self.write_error_time_out('error_tlex.txt', msg)
 #             return total_time, []
+
+    def crfpp(self, msg):
+        print 'crf++'
+        crf = CRF()
+        crf.create_file_input(msg)
+        start_time = time.time()
+        os.system('crf_test -m model crf.test.data > crf.result')
+        total_time = time.time() - start_time #return in seconds
+        
+        
+        
+        
     
     def befor_trim(self, msg):
         return msg.replace("//","").replace("\n","")
     
     def after_trim(self, msg):
         return msg.replace("\n","")
-
-
-# str =  urllib.quote('ทดสอบ')
-# print str
-# newstr= str.encode('utf-8')
-# wordseg = WordSegmentation()
-# wordseg.NewTlexs(urllib.quote('ทดสอบ'),'test')
-# wordseg.thaisematic('วันที่ 15-16 สิงหาคม 2532\n', [])
-
-# u = unicode('ทดสอบ','utf-8')
-# u1 = unicode('ทดสอบ','utf-8')
-# print u
-# print levenshtein(['g', 'a'], ['g', 'a', 't'])
-# wordseq = WordSegmentation()
-# wordseq.Tlex('test', [])
-# param = "ทดสอยได้ไหม"
-# u = unicode("./libthai "+param, "utf-8")
-# os.system(u.encode('tis-620'))
-# f = open('thaiout.txt','r')
-# msg = f.read()
-# print msg.decode('tis-620')
-# f.close()
-# f = open('test.txt','w')
-# f.write(u.encode('tis620'))
-# f.close()
-
-#                     time_libthai, d_libthai, out_libthai = wordseg.libthai(origin_data, result)                
-#                     time_swath, d_swath, out_swath = wordseg.swath(origin_data, result)
-#                     time_wordcut, d_wordcut, out_wordcut = wordseg.wordcut(origin_data, result)
-#     
-#                     try:
-#                         time_tlex, d_tlex, out_tlex = wordseg.Tlex(origin_data.decode('utf-8'), result)
-#                     except Exception, e:
-#                         str_msg_tlex = str(self.line_id)+','+str(e)
-#                         self.write_error_time_out('error_tlex.txt', str_msg_tlex)
-#                     
-#                     try:
-#                         time_sem, d_sem, out_sem = wordseg.thaisematic(origin_data, result)
-#                     except Exception, e:
-#                         str_msg_sem = str(self.line_id)+','+str(e)
-#                         self.write_error_time_out('error_thaisemantic.txt', str_msg_sem)
-#                         time_sem = 1200
-#                         d_sem = 1
-#                         
-#                     self.write_output_time(time_libthai, time_swath, time_wordcut, time_sem, time_tlex)
-#                     self.write_output_distance(d_libthai, d_swath, d_wordcut, d_sem, d_tlex)
 

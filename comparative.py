@@ -1,6 +1,7 @@
 import sys, os, time
 from wordsegmentation import WordSegmentation
-
+from BEST import BESTProcess
+from computation import CorrectnessComputation
 # spacial char 
 # <minus> -
 # <space>
@@ -30,19 +31,25 @@ class MainCompare:
 			return next_data[:next_data.index("/")]
 		
 	def comput_precision_recall(self, OutputWord, RefWord):
+		correctness = CorrectnessComputation()
+		return correctness.precision_recall_f1(OutputWord, RefWord)
 # 		print 'Out word',OutputWord
 # 		print 'Ref word',RefWord
-		if len(OutputWord) == 0:
-			return 0, 0, 0
-		s_OutputWord = set(OutputWord)
-		s_RefWord = set(RefWord)
-		Corr = s_OutputWord.intersection(s_RefWord)
-		precision = float(len(Corr)) / len(OutputWord)
-		recall = float(len(Corr)) / len(RefWord)
-		if precision+recall == 0:
-			return precision, recall, 0
-		f = float(2*precision*recall)/float(precision+recall)
-		return precision, recall, f
+# 		if len(OutputWord) == 0:
+# 			return 0, 0, 0
+# 		s_OutputWord = set(OutputWord)
+# 		s_RefWord = set(RefWord)
+# 		Corr = s_OutputWord.intersection(s_RefWord)
+# 		precision = float(len(Corr)) / len(OutputWord)
+# 		recall = float(len(Corr)) / len(RefWord)
+# 		if precision+recall == 0:
+# 			return precision, recall, 0
+# 		f = float(2*precision*recall)/float(precision+recall)
+# 		return precision, recall, f
+	
+	def best_process_data(self, start):
+		best = BESTProcess()
+		best.compareProcess()
 
 	
 	def process_data(self, start):
@@ -101,10 +108,12 @@ class MainCompare:
 				break
 			counter = counter+1
 	
+	
+	def process_best_corpus(self):
+		pass
+	
 	def validate_data(self, log_data):
 		pass
-# 		validate = ValidateData()
-# 		validate.process_log(log_data)
 	
 	def read_resume(self):
 		f = open('resume.txt','r')
@@ -151,22 +160,11 @@ class MainCompare:
 	def write_output_time(self, time_libthai, time_swath, time_wordcut, time_sem, time_tlex):
 		msg = ','.join([str(time_libthai), str(time_swath), str(time_wordcut), str(time_sem), str(time_tlex)])
 		self.write_file(str(self.line_id)+','+msg, 'time.txt')
-	
-	
-# 	def write_output_distance(self, d_libthai, d_swath, d_wordcut, d_sem, d_tlex):
-# 		msg = ','.join([str(d_libthai), str(d_swath), str(d_wordcut), str(d_sem), str(d_tlex)])
-# 		self.write_file(str(self.line_id)+','+msg, 'distance.txt')
 
 try :
 	arg = sys.argv[1]
 except Exception, e:
-	arg = ''
-# 	print 'no arg'
-
-#raw file
-#line, corr , OutputWord, RefWord
-#          libthai                swath               
-#line, precision, recall, f1, precision, recall, f1, 
+	arg = '' 
 
 print '************** Start *****************'
 mainCmp = MainCompare()
