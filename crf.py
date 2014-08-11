@@ -57,14 +57,15 @@ class CRF:
     def create_file_input(self, message):
         fileUtil = FileUtil()
         lst_char = message[:]
+        all_message = ''
         for j in range(len(lst_char)):
             if j == 0:
                 ans = 'B'
             else:
                 ans = 'I'
-            message_model = lst_char[j]+' '+self.get_group(lst_char[j])+' '+ans
-            print message_model
-            fileUtil.write_file('crf.test.data', message_model)                    
+            message_model = lst_char[j]+' '+self.get_group(lst_char[j])+' '+ans+'\n'
+            all_message = all_message+message_model
+        fileUtil.write_newfile('crf.test.data', all_message)                    
     
     def create_file_output(self, message):
         result = []
