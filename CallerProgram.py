@@ -141,7 +141,25 @@ class CallerProgram(object):
             total_time = time.time() - start_time #return in seconds
             msg = line_id+','+str(e)
             self.write_error_time_out('error_tlex.txt', msg)            
-            return total_time, []                  
+            return total_time, []
+        
+    def process_ans(self, lst):
+        b_str = ''
+        ans_str = ''
+        for line_data in lst:
+            try :
+                data = line_data.split('\t')
+                b_data = data[3][:-1]
+                if b_data == 'B':
+                    b_str = b_str + 'B'
+                else:
+                    b_str = b_str + 'I'
+                ans_str = ans_str+data[0]
+            except Exception, e:
+                b_str = b_str+'B'
+                ans_str = ans_str+' '
+        return b_str, ans_str
+                              
 
     def crfpp(self, msg, model):
         crf = CRF()
@@ -152,17 +170,19 @@ class CallerProgram(object):
         total_time = time.time() - start_time #return in seconds
 
         lst = fileUtil.read_file('logs/out/crf.result')
-        lst = [a for a in lst if a != u'\n']
-        str_ans = reduce(lambda x,y:x+y, [a.split('\t')[0] for a in lst])
+#         lst = [a for a in lst if a != u'\n']
+#         str_ans = reduce(lambda x,y:x+y, [a.split('\t')[0] for a in lst])
          
         # ans = reduce(lambda x,y:x+y, [a.split('\t')[3][:-1] for a in lst])
-        lst_col3 = [a.split('\t')[3][:-1] for a in lst]
+#         lst_col3 = [a.split('\t')[3][:-1] for a in lst]
+        lst_col3, str_ans = self.process_ans(lst)
         lst_ans = [n for (n, e) in enumerate(lst_col3) if e == 'B']
         result_lst = []
         for i in range(len(lst_ans)-1):
             a = lst_ans[i]
             b = lst_ans[i+1]
-            result_lst.append(str_ans[a:b])    
+            result_lst.append(str_ans[a:b])
+        result_lst.append(str_ans[b:len(str_ans)])
         return total_time, result_lst
   
     def befor_trim(self, msg):
